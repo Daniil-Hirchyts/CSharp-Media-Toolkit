@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WaveForm": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

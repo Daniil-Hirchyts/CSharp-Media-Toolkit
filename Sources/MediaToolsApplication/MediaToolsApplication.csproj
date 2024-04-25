@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Vosk" Version="0.3.32" />
+		<PackageReference Include="FFmpeg.AutoGen" Version="6.1.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\WaveForm\WaveForm.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="MediaToolsApp\" />
+	</ItemGroup>
+
+</Project>
