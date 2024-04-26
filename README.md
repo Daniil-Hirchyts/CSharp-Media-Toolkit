@@ -1,56 +1,71 @@
-# Media Tools
+# C# Media Toolkit
 
-**C# media-processing libraries and Windows desktop interfaces · 2024**
+A Windows desktop application and .NET libraries for audio conversion, waveform generation, scene detection, speech transcription and translation.
 
-I developed **Media Tools** to explore audio and video processing through reusable C# libraries and WPF interfaces. The work included audio conversion, waveform rendering, scene-change detection, frame browsing, speech transcription and translation integrations.
+## Features
 
-The repository retained the .NET 6 application and libraries, the original NUnit tests, an earlier .NET Framework interface and the original library reference.
-
-## Repository structure
-
-| Location | Contents |
+| Tool | Function |
 | --- | --- |
-| [Media_Tools.sln](Media_Tools.sln) | Root solution for the .NET 6 application, libraries and tests. |
-| [src/MediaToolsApplication](src/MediaToolsApplication/) | WPF application with waveform, shot-detection and transcription controls. |
-| [src/WaveForm](src/WaveForm/) | The main media-processing library, built as the `MediaTools` assembly. |
-| [src/MediaToolLib](src/MediaToolLib/) | Additional filesystem, waveform and scene-detection helpers. |
-| [tests/MediaToolsTest](tests/MediaToolsTest/) | NUnit tests and media/service integration cases. |
-| [legacy](legacy/) | The earlier .NET Framework 4.8 interface and its bundled dependencies. |
-| [assets/samples](assets/samples/) | The original example waveform image, shared by the interfaces. |
-| [docs](docs/) | Development notes and the archived library API reference. |
+| **Waveforms** | Generate PNG waveforms from audio or video, with control over colour, dimensions and channel mixing. |
+| **Scene detection** | Detect scene changes using a configurable threshold, export JPEG previews and read shot timestamps. |
+| **Frame extraction** | Extract still images from video and browse detected shots in the desktop interface. |
+| **Audio conversion** | Convert between MP3 and WAV and extract audio from video. |
+| **Transcription** | Transcribe audio using a local Vosk model or Google Cloud Speech. |
+| **Translation** | Translate text through DeepL. |
 
-## Media-processing work
+![Example waveform output](assets/samples/sheep.mp4-waveform-mixed.png)
 
-The libraries implemented file and folder utilities alongside FFmpeg-based processing:
+## Run the desktop application
 
-- Converting audio and video inputs into audio files.
-- Rendering waveform images with configurable dimensions, colours and channel mixing.
-- Detecting scene changes and extracting preview frames.
-- Reading shot timestamps and navigating extracted frames through the desktop interface.
-- Exploring voice activity, silence detection and speech transcription.
+Requirements:
 
-The code also contained integrations and experiments using Vosk, Google Cloud Speech, Microsoft speech services, Amazon Transcribe/S3 and DeepL. Those paths used provider-specific configuration or local speech models.
+- Windows x64.
+- A .NET SDK that supports the project's .NET 6 targets, plus the .NET 6 Windows Desktop Runtime.
+- FFmpeg 6.1 shared binaries, matching the `FFmpeg.AutoGen` dependency.
 
-## Desktop application
+```powershell
+git clone https://github.com/Daniil-Hirchyts/CSharp-Media-Toolkit.git
+cd CSharp-Media-Toolkit
+dotnet run --project src/MediaToolsApplication/MediaToolsApplication.csproj --configuration Release
+```
 
-The main WPF interface grouped the tools into tabs and exposed file selection, waveform settings, scene thresholds, frame previews and transcription controls. Its settings interface stored the selected FFmpeg location.
+In **Settings**, select `ffmpeg.exe` from the folder containing the FFmpeg shared libraries. The waveform and scene-detection tabs then accept a media file and the relevant processing options.
 
-An earlier .NET Framework 4.8 application was retained under [legacy/MediaToolsApp](legacy/MediaToolsApp/). It included an earlier media interface and MVVM examples. The root solution grouped the .NET 6 projects separately from that historical application.
+Speech and translation tools require additional model or provider configuration. See [setup and configuration](docs/setup.md).
 
-## Technical environment
+## Use the library
 
-The main projects targeted **.NET 6**, with the desktop application and media/test projects targeting Windows. They used **WPF**, **FFmpeg**, **FFmpeg.AutoGen**, **Vosk**, **System.Drawing** and the speech/translation SDKs recorded in their project files.
+The main library is built from `src/WaveForm` as `MediaTools.dll`, with public types in the `Tools` namespace.
 
-The original tests covered file helpers and included cases that depended on media fixtures, native tools or external services. The original model locations and integration configuration remained part of the historical source.
+```csharp
+using FFmpeg.AutoGen;
+using Tools;
 
-The application and processing library compiled after reorganisation. The preserved test project still referenced earlier APIs; its existing compilation errors were recorded in the development notes.
+ffmpeg.RootPath = @"C:\ffmpeg\bin";
 
-The [development notes](docs/development.md) recorded the solution layout and environment requirements. The [archived API reference](docs/archive/library-reference.md) retained the original library documentation.
+string waveform = AudioTools.WaveForm(
+    file: @"media\clip.mp4",
+    color: "blue",
+    ismixed: true,
+    height: 400,
+    width: 1200,
+    outDir: @"output\waveforms\");
+```
 
-## Author and history
+`WaveForm` returns the path to the generated PNG. See the [API reference](docs/api-reference.md) for conversion, scene detection and file utilities.
 
-Developed by **[Daniil Hirchyts](https://github.com/Daniil-Hirchyts)**. The original commits were recorded in April 2024, and their authorship and commit objects were retained.
+## Project structure
+
+| Project | Purpose |
+| --- | --- |
+| [MediaToolsApplication](src/MediaToolsApplication/) | WPF desktop interface. |
+| [WaveForm](src/WaveForm/) | Main audio, video, speech and translation library. |
+| [MediaToolLib](src/MediaToolLib/) | Additional filesystem, waveform and scene helpers. |
+| [MediaToolsTest](tests/MediaToolsTest/) | NUnit helper and integration tests. |
+| [Legacy application](legacy/) | .NET Framework 4.8 interface and its dependencies. |
+
+[Build, configuration and test details](docs/setup.md) describe the environment requirements and current test limitations.
 
 ## License
 
-Original code by Daniil Hirchyts is licensed under the [MIT License](LICENSE). Bundled NuGet packages and other third-party components retain their own licenses and notices.
+[MIT](LICENSE) for project code. Third-party dependencies use their respective licenses.

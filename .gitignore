@@ -13,7 +13,7 @@ TestResults/
 *.DotSettings.user
 .DS_Store
 
-# Restored packages; existing legacy package files remain tracked
+# NuGet packages
 packages/
 
 # Generated media and service output
