@@ -16,6 +16,7 @@ using FFmpeg.AutoGen;
 using MediaToolsApplication;
 using Microsoft.Win32;
 using Tools;
+using Vosk;
 using Path = System.IO.Path;
 
 
@@ -78,6 +79,46 @@ public partial class MainWindow : Window
             Button_Download.Visibility = Visibility.Hidden;
         }
         else MessageBox.Show("FFmpeg binaries not found. Please select the path to FFmpeg.");
+    }
+
+    private void Button_SelectAudio_Click(object sender, RoutedEventArgs e)
+    {
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.Filter = "Audio Files (*.wav;*.mp3)|*.wav;*.mp3|All files (*.*)|*.*";
+        if (openFileDialog.ShowDialog() == true)
+        {
+            SelectedAudioPath.Text = openFileDialog.FileName;
+        }
+    }
+
+    private async void Button_Transcribe_Click(object sender, RoutedEventArgs e)
+    {
+        if (string.IsNullOrEmpty(SelectedAudioPath.Text))
+        {
+            MessageBox.Show("Please select an audio file first.");
+            return;
+        }
+        //model folder is C:\Users\Daniil\Music\vosk-model-eu
+        Model model = new Model(@"C:\Users\Daniil\Music\vosk-model-eu");
+        //44.1 kHz
+        VoskRecognizer recognizer = new VoskRecognizer(model, 44100.0f);
+        using (Stream source = File.OpenRead(SelectedAudioPath.Text))
+        {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = source.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                if (recognizer.AcceptWaveform(buffer, bytesRead))
+                {
+                    TranscriptionResults.Text += recognizer.Result();
+                }
+                else
+                {
+                    TranscriptionResults.Text += recognizer.PartialResult();
+                }
+            }
+            TranscriptionResults.Text += recognizer.FinalResult();
+        }
     }
 
 

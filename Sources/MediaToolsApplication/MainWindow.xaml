@@ -534,6 +534,14 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="Transcription Vosk">
+                <StackPanel Margin="10">
+                    <Button Content="Select Audio File" Click="Button_SelectAudio_Click" Grid.Row="0" Margin="0,0,0,10"/>
+                    <TextBox x:Name="SelectedAudioPath" Grid.Row="1" IsReadOnly="True"/>
+                    <Button Content="Transcribe" Click="Button_Transcribe_Click" Grid.Row="2" Margin="0,10,0,0"/>
+                    <TextBlock x:Name="TranscriptionResults" Grid.Row="3" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                </StackPanel>
+            </TabItem>
         </TabControl>
 
         <!--<Label>Names</Label>

@@ -17,7 +17,7 @@
     <PackageReference Include="AWSSDK.TranscribeService" Version="3.7.9.16" />
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="DeepL.net" Version="1.0.1" />
-    <PackageReference Include="FFmpeg.AutoGen" Version="6.1.0.1" />
+    <PackageReference Include="FFmpeg.AutoGen" Version="6.1.0" />
     <PackageReference Include="Google.Cloud.Speech.V1" Version="3.7.0" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="4.10.0" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.19.0" />

@@ -10,7 +10,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Vosk" Version="0.3.32" />
-		<PackageReference Include="FFmpeg.AutoGen" Version="6.1.0.1" />
+		<PackageReference Include="FFmpeg.AutoGen" Version="6.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
