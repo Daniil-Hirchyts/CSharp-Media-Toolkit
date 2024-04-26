@@ -115,7 +115,7 @@
                                Width="Auto">
                             <Image.Source>
                                 <BitmapImage DecodePixelWidth="500"
-                                             UriSource=".\ObjetsPermanents\sheep.mp4-waveform-mixed.png" />
+                                             UriSource="pack://application:,,,/Assets/Samples/sheep.mp4-waveform-mixed.png" />
                             </Image.Source>
                         </Image>
                     </StackPanel>
@@ -260,7 +260,7 @@
                                    HorizontalAlignment="Stretch"
                                    Height="Auto">
                                 <Image.Source>
-                                    <BitmapImage UriSource=".\ObjetsPermanents\sheep.mp4-waveform-mixed.png" />
+                                    <BitmapImage UriSource="pack://application:,,,/Assets/Samples/sheep.mp4-waveform-mixed.png" />
                                 </Image.Source>
                             </Image>
                             <StackPanel Visibility="Hidden" x:Name="ProgressPanel" Orientation="Horizontal" Width="500">

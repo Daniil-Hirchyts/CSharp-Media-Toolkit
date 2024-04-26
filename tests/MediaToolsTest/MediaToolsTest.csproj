@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WaveForm\WaveForm.csproj" />
+    <ProjectReference Include="..\..\src\WaveForm\WaveForm.csproj" />
   </ItemGroup>
 
 </Project>

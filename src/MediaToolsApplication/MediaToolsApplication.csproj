@@ -21,4 +21,11 @@
 		<Folder Include="MediaToolsApp\" />
 	</ItemGroup>
 
+  <ItemGroup>
+    <Resource Include="..\..\assets\samples\sheep.mp4-waveform-mixed.png">
+      <Link>Assets\Samples\sheep.mp4-waveform-mixed.png</Link>
+      <LogicalName>Assets/Samples/sheep.mp4-waveform-mixed.png</LogicalName>
+    </Resource>
+  </ItemGroup>
+
 </Project>

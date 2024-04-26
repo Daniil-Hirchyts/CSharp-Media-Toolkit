@@ -108,7 +108,7 @@
                                Width="Auto">
                             <Image.Source>
                                 <BitmapImage DecodePixelWidth="500"  
-                                             UriSource="C:\Users\Ce PC\Documents\Ecosm\Sources\WaveForm\WaveForm\PNGs\sheep.mp4-waveform-mixed.png" />
+                                             UriSource="pack://application:,,,/Assets/Samples/sheep.mp4-waveform-mixed.png" />
                             </Image.Source>
                         </Image>
                     </StackPanel>
@@ -217,7 +217,7 @@
                                HorizontalAlignment="Stretch"
                                Height="Auto">
                             <Image.Source>
-                                <BitmapImage UriSource="C:\Users\Ce PC\Documents\Ecosm\Sources\WaveForm\WaveForm\PNGs\sheep.mp4-waveform-mixed.png" />
+                                <BitmapImage UriSource="pack://application:,,,/Assets/Samples/sheep.mp4-waveform-mixed.png" />
                             </Image.Source>
                         </Image>
                     </StackPanel>

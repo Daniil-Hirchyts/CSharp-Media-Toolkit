@@ -1,31 +1,35 @@
-./Sources/WaveForm/Data/*
-./Sources/WaveForm/GoogleSpeech/*
-./Sources/WaveForm/ShotDetection/*
-./Sources/WaveForm/Silences/*
-./Sources/WaveForm/JPGs/*
-./Sources/WaveForm/HumanVoices/*
-./Sources/WaveForm/SystemSpeech/*
-./Sources/WaveForm/WaveForm/*
-./Sources/WaveForm/AmazonSpeechToText/*
-
-./Sources/MediaToolsTest/bin/Debug/net6.0-windows10.0.22000.0/Tests/*
-
-./Sources/MediaToolsApplication/bin/Debug/net6.0-windows10.0.22000.0/ShotDetection/JPGs/*
-./Sources/MediaToolsApplication/bin/Debug/net6.0-windows10.0.22000.0/WaveForm/PNGs/*.png
-./Sources/MediaToolsApp/bin/Debug/net6.0-windows10.0.22000.0/ShotDetection/JPGs/*
-./Sources/MediaToolsApp/bin/Debug/net6.0-windows10.0.22000.0/WaveForm/PNGs/*.png
-
-./Sources/MediaToolsApplication/bin/Debug/net6.0-windows10.0.22000.0/ShotDetection/*
-./Sources/MediaToolsApplication/bin/Debug/net6.0-windows10.0.22000.0/WaveForm/*
-./Sources/MediaToolsApp/bin/Debug/net6.0-windows10.0.22000.0/ShotDetection/*
-./Sources/MediaToolsApp/bin/Debug/net6.0-windows10.0.22000.0/WaveForm/PNGs/*
-
+# Build output and test results
+[Bb]in/
+[Oo]bj/
+TestResults/
 *.cache
-bin/
+*.log
+
+# Local editor and user settings
 .vs/
-obj/
-.\Sources\.vs
-./Sources/.vs
-**/bin/
-**/obj/
-**/PNGs
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+.DS_Store
+
+# Restored packages; existing legacy package files remain tracked
+packages/
+
+# Generated media and service output
+/Data/
+/src/WaveForm/Data/
+/src/WaveForm/WaveForm/
+**/PNGs/
+**/JPGs/
+**/ShotDetection/
+**/GoogleSpeech/
+**/AmazonSpeechToText/
+**/HumanVoices/
+**/SystemSpeech/
+**/Silences/
+
+# Local configuration
+.env
+.env.*
+!.env.example

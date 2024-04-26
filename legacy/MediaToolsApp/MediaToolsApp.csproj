@@ -113,8 +113,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WaveForm\WaveForm.csproj">
-      <Project>{491ad20d-d7c0-4198-912e-d79674239dd9}</Project>
+    <ProjectReference Include="..\..\src\WaveForm\WaveForm.csproj">
+      <Project>{491ad20d-d7c0-4198-912e-d79674239dd9}  <ItemGroup>
+    <Resource Include="..\..\assets\samples\sheep.mp4-waveform-mixed.png">
+      <Link>Assets\Samples\sheep.mp4-waveform-mixed.png</Link>
+      <LogicalName>Assets/Samples/sheep.mp4-waveform-mixed.png</LogicalName>
+    </Resource>
+  </ItemGroup>
+
+</Project>
       <Name>WaveForm</Name>
     </ProjectReference>
   </ItemGroup>
@@ -140,7 +147,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WaveForm\WaveForm.csproj" />
+    <ProjectReference Include="..\..\src\WaveForm\WaveForm.csproj" />
   </ItemGroup>
 
 </Project>-->
